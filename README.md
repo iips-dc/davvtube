@@ -22,7 +22,7 @@ Objectives
 
 
 Application Features
-====================
+=====================
 
 1. Davv User Registration
 2. User Approval by admin
