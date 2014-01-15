@@ -1,7 +1,7 @@
 davvtube
 ========
 
-A Video Hub service exclusive for DAVV  students, faculty members, Researchers, Learners and knowledge seekers.
+This is a Video Hub service exclusive for DAVV  students, faculty members, Researchers, Learners and knowledge seekers.
 
 Introduction
 ============
