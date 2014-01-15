@@ -1,0 +1,9 @@
+<?php
+$host="http://127.0.0.1";
+$folderName="/public_html_try";
+$dbhost="localhost";
+$databaseName="my_davv_tube"; 
+$dbuser="root";
+$dbpassword="";
+$image_path="http://127.0.0.1/public_html_try/images/";
+?>
