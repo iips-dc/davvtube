@@ -25,7 +25,8 @@ $numrows = mysql_num_rows($query);
 		if($username==$dbusername&&$password==$dbpassword)
 		{
 			//echo "You're in! <a href='member.php'>Click</a> here to enter the member page ";
-			//$_SESSION['username']=$username;
+			//$_SESSION['id']=$row['uid'];
+			$_SESSION['username']=$username;
 			//echo $_SESSION['username'];
 			header("Location:try_DAVV_tube_template/index.php");
 		}

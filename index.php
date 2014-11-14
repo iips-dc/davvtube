@@ -10,9 +10,9 @@ include('analytics.php')?>
 	    <br>
 		<div class="videoWrapper">
 			<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
-      poster="try_DAVV_tube_template/img/oceans-clip.png"
+      poster="thumbnail.jpg"
       data-setup="{}">
-					<source src="try_DAVV_tube_template/uploaded/1 - 5 - Merge Sort Analysis (9 min).mp4" type='video/mp4' />
+					<source src="dt.mp4" type='video/mp4' />
 					<source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
 					<source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
 					<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->

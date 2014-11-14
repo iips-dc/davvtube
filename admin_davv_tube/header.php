@@ -1,7 +1,9 @@
 <?php 
+session_start();
 include('config.php');
 $set_admin_path=$host.$folderName."/admin_davv_tube/";
 $set_user_template_path=$host.$folderName."/try_DAVV_tube_template/";
+if(isset($_SESSION['aid'])) {
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,10 +57,10 @@ $set_user_template_path=$host.$folderName."/try_DAVV_tube_template/";
             </ul>
 			</li>
 			<li><a href="<?php echo $set_admin_path;?>analytics.php">Analytics</a></li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign out<b class="caret"></b></a>
-			<ul class="dropdown-menu">
+            <li><a href="admin_logout.php">Sign out</a>
+			<!--<ul class="dropdown-menu">
 			<li><a href="#">Change Password</a></li>
-            </ul>
+            </ul>-->
 			</li>
           </ul>
         </div>
@@ -66,3 +68,8 @@ $set_user_template_path=$host.$folderName."/try_DAVV_tube_template/";
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
+<?php }
+else {
+header ("location:../admin_login.php");
+}
+?>

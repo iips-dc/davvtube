@@ -23,7 +23,7 @@
 		  <font size="3pt">If you are not registered please complete registration process by filling the appropriate Sign-Up form:
 		  <ul>
 		 <li> <a href="<?php echo $student_registration_form;?>">SIGN UP-student</a></li>
-		 <li> <a href="#">SIGN UP-faculty</a></li>
+		 <li> <a href="<?php echo $faculty_registration_form;?>">SIGN UP-faculty</a></li>
 		  </ul>
 		  </font>
 		</form>

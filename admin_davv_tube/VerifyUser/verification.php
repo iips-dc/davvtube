@@ -1,5 +1,8 @@
 <?php 
 include("../../commonVar.php");
+session_start();
+if(isset($_SESSION['aid'])) {
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,17 +58,16 @@ include("../../commonVar.php");
                          <li><a href="faculty_verification.php">Faculty</a></li>
                </ul>
 	    </li>
-			 <li class="dropdown"><a href="<?php echo $host.$folderName;?>/admin_davv_tube/admin_forum/verify_post.php" class="dropdown-toggle" data-toggle="dropdown">Comments<b class="caret"></b></a>
+			<li class="dropdown"><a href="../index.php" class="dropdown-toggle" data-toggle="dropdown">Verify Blog<b class="caret"></b></a>
 			<ul class="dropdown-menu">
-			<li><a href="<?php echo $host.$folderName;?>/admin_davv_tube/admin_forum/verify_post.php">Pending Comments</a></li>
+			<li><a href="../admin_forum/verify_post.php">Post</a></li>
+			<li><a href="../admin_forum/verify_reply.php">Reply</a></li>
 			<!--<li><a href="#">Approve Comments</a></li>-->
             </ul>
 			</li>
 			<li><a href="../analytics.php">Analytics</a></li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign out<b class="caret"></b></a>
-			<ul class="dropdown-menu">
-			<li><a href="#">Change Password</a></li>
-            </ul>
+                  <li><a href="../admin_logout.php" >Sign out</a>
+			
 			</li>
           </ul>
         </div>
@@ -288,7 +290,7 @@ include("../../commonVar.php");
 					  
 					    //remove the currently selected student from the array
 					    self.people.remove(person);
-                                                   alert(response);
+                                                  // alert(response);
 						alert("Notification is  send Successfully for deny");
 				  }
 			    );
@@ -302,7 +304,7 @@ include("../../commonVar.php");
 					  
 					    //remove the currently selected student from the array
 					    self.people.remove(person);
-                                               alert(response);
+                                               //alert(response);
 						alert("Notification is send Successfully for allow");
 				  }
 			    );
@@ -331,7 +333,7 @@ include("../../commonVar.php");
 		
 		function editDocument(){
           var edit_id = document.getElementById("result").val();
-		  alert(edit_id);
+		//  alert(edit_id);
         $.ajax({
         type: 'POST',
         url: 'info.php',
@@ -346,3 +348,9 @@ include("../../commonVar.php");
     <script src="../js/bootstrap.js"></script>
 </body>
 </html>
+<?php }
+else {
+header ("location:../../admin_login.php");
+}
+?>
+

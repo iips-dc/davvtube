@@ -1,13 +1,17 @@
 <?php
-
-$con=mysqli_connect("mysql13.000webhost.com","a7561422_root","tubedau7","a7561422_dtube");
+session_start();
+include("../commonVar.php");
+$con=mysqli_connect($dbhost,$dbuser,$dbpassword,$databaseName);
 // Check connection
 if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
-  $set_path="http://www.daut.netai.net/try_DAVV_tube_template/";
+  $set_path=$host.$folderName."/try_DAVV_tube_template/";
+if(isset($_SESSION['username'])) {
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,10 +100,10 @@ height: 40% !important;
                       <a href="#none" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li class="nav-header">Video Categories</li>
-                        <li><a href="<?php echo $set_path;?>ComputerScience.php">Computer Science</a></li>
-                        <li><a href="<?php echo $set_path;?>category.php?category="Management"">Management</a></li>
-                        <li><a href="<?php echo $set_path;?>category.php?category="Commerce"">Commerce</a></li>
-						 <li><a href="<?php echo $set_path;?>category.php?category="General"">General</a></li>
+                        <li><a href="<?php echo $set_path;?>ComputerScience.php?category=Computer_Science">Computer Science</a></li>
+                        <li><a href="<?php echo $set_path;?>ComputerScience.php?category=Management">Management</a></li>
+                        <li><a href="<?php echo $set_path;?>ComputerScience.php?category=Commerce">Commerce</a></li>
+						 <li><a href="<?php echo $set_path;?>ComputerScience.php?category=General">General</a></li>
                         <!--<li><a href="search.html">Search Results</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">Blog Pages</li>
@@ -134,3 +138,8 @@ height: 40% !important;
       </div><!-- end navbar-inner -->
     </div><!-- end navbar -->
    <div class="clear"></div> 
+<?php }
+else {
+header ("location:../login.php");
+}
+?>

@@ -8,8 +8,9 @@
  */
  
 // set up DB
-$conn = mysql_connect("localhost", "admin", "admin");
-mysql_select_db("my_davv_tube");
+include("commonVar.php");
+$conn = mysql_connect($dbhost, $dbuser,$dbpassword);
+mysql_select_db($databaseName);
 
 // set your db encoding -- for ascent chars (if required)
 mysql_query("SET NAMES 'utf8'");

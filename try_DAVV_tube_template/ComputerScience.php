@@ -5,11 +5,20 @@ include('header.php');
  <div class="container">
     <ul>
 	<?php
-	  $result = mysqli_query($con,"SELECT * FROM video_list WHERE category='Computer_Science'");
+	    if(isset($_GET['category']))
+		{
+		
+	  $category=$_GET['category'];
+	  }
+	  else
+	  {
+	  $category='Computer_Science';
+	  }
+	  $result = mysqli_query($con,"SELECT * FROM video_list WHERE category='$category'");
 	?>
       <div class="row margin-bottom-20">
         <div class="col-md-12 center">
-          <h3>All videos related to computer science...</h3>
+          <h3>All videos related to <?php echo $category;?> ...</h3>
         </div><!-- end col -->
       </div><!-- end row -->
      <!-- <div class="row row-tiles">-->

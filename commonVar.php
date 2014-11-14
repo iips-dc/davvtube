@@ -1,9 +1,11 @@
 <?php
+//$host=10.81.202.3;
+//$host="http://localhost:8094";
 $host="http://127.0.0.1";
-$folderName="/public_html_try";
+$folderName="/davv_tube";
 $dbhost="localhost";
 $databaseName="my_davv_tube"; 
 $dbuser="root";
 $dbpassword="";
-$image_path="http://127.0.0.1/public_html_try/images/";
+$image_path="http://127.0.0.1/davv_tube/images/";
 ?>

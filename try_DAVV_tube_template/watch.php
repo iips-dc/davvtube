@@ -13,6 +13,7 @@ while($row = mysqli_fetch_array($result))
 	   $title=$row['title'];
 	   $category=$row['category'];
 	   $view=$row['views']+1;
+	   $instructor=$row['instructor_name'];
 	   
 	  // $url=$row['url'];
   }
@@ -30,14 +31,14 @@ while($row = mysqli_fetch_array($result))
 	    <br>
 		<div class="videoWrapper">
 			<video id="example_video_1" class="video-js vjs-default-skin " autoplay controls preload="none" width="640" height="264"
-      poster="img/loading_tab.gif"
+      poster="http://video-js.zencoder.com/oceans-clip.png"
       data-setup="{"autoplay": true,"preload": "auto","loop": "true"}">
 					<source src="uploaded/<?php echo $name; ?>.m4v" type="video/mp4" />
 					<source src="uploaded/<?php echo $name; ?>.webm" type="video/webm" />
 					<source src="uploaded/<?php echo $name; ?>.ogv" type="video/ogg" />
 					<source src="uploaded/<?php echo $name; ?>.mp4"  />
-					<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
-					<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+					<!--<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+					<!--<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
 					<!--<object type="application/x-shockwave-flash" data="uploaded/flashfox.swf" width="640" height="264" style="position:relative;">
 						<param name="movie" value="uploaded/flashfox.swf" />
 						<param name="allowFullScreen" value="true" />
@@ -110,7 +111,8 @@ else
     <ul>
 	<?php
 	
-	 $result = mysqli_query($con,"SELECT * FROM video_list WHERE original_name LIKE '%.mp4'");
+    
+	 $result = mysqli_query($con,"SELECT * FROM video_list WHERE instructor_name LIKE '%$instructor%' AND original_name LIKE '%.mp4' AND video_id !='$id' OR tags='$tags' ORDER BY video_id");
 	?>
       <div class="row margin-bottom-20">
         <div class="col-md-12 center">
@@ -125,6 +127,7 @@ else
   
   $id=$row['video_id'];
   $name=$row['file_name'];
+$titl=$row['title'];
   //$url=$row['url'];
 	  if($i==1 || $i==5)
 	  {
@@ -139,7 +142,7 @@ else
             <input class="tile-photo"  type="submit" style="background-image:url(img/sample/Blank_Video_Thumbnail.jpg);background-position:center center;" value=""/>
             <div class="tile-details">
               
-              <p><?php echo " <a href='watch.php?id=$id'>$name</a><br/>"; ?> </p>
+              <p><?php echo " <a href='watch.php?id=$id'>$titl</a><br/>"; ?> </p>
              </form>
             </div><!-- end tile details -->
           </div><!-- end tile -->
@@ -152,18 +155,18 @@ else
 		}
 		} 
 		
-     mysqli_close($con);
+     
      ?>
 
 		
        
       <!--</div><!-- end row -->
     </div><!-- end container -->
-    
-   
+        
 	
    
 <?php
+mysqli_close($con);
 /*mysqli_close($con);*/
 
 include('footer.php');

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Student Registration</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <style>
+	body {margin-top: 60px;}
+    </style>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">DAVV Tube</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Sign up</a></li>
+            <li><a href="#services">Sign in</a></li>
+            
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+   <div class="container" data-bind="load: loadData()">
+		<h3>Register as a Student :<h3>
+	  <div class="row">
+	  
+		<div class="col-md-4">
+		<form action="Submit_stud_registration.php" method="post">
+		<h4>First Name</h4>
+		  <input type="text" data-bind="value: fname, hasfocus: f_name_focus()" name="f_name" class="form-control inputWidth" placeholder="Enter Your First Name" />
+		  <!--<h4><label>Last Name</label></h4>-->
+		  <h4>Last Name</h4>
+		  <input type="text" data-bind="value: lname" name="l_name" placeholder="Enter Your Last Name" class="form-control required" title="Please Enter Your Name">
+		  <h4>Gender</h4>
+		  <!--<div class="input-group">-->
+		  <span class="input-group-addon">
+		  <input type="radio" value="M" name="Gender"> <h5>Male</h5>
+		  <input type="radio" value="F" name="Gender"> <h5>Female</h5>
+		  </span>
+		  <!--</div> /input-group -->
+		  
+		  <h4>Date of birth</h4>
+		  <input type="text" data-bind="value: dob" name="dob" placeholder="Enter Your Date of Birth" class="form-control required" title="Please Enter Your Date of Birth">
+		  <h4>Email</h4>
+		  <input type="email" data-bind="value: email" name="Email" placeholder="Enter Your Email-id" class="form-control required" title="Please Enter Your Email-id">
+		  <h4>Department</h4>
+		  <input type="text" data-bind="value: dept" name="dept_name" placeholder="Enter Your Department" class="form-control required" title="Please Enter Your Department">
+		  <h4>Course</h4>
+		  <input type="text" data-bind="value: course" name="course" placeholder="Enter Your course" class="form-control required" title="Please Enter Your Course">
+		  <h4>Semester</h4>
+		  <input type="text" data-bind="value: sem" name="sem" placeholder="Enter Your Semester" class="form-control required" title="Please Enter Your Semester">
+		  <h4>Enrollment Number</h4>
+		  <input type="text" data-bind="value: enroll" name="enroll_no" placeholder="Enter Your Enrollment Number" class="form-control required" title="Please Enter Your Enrollment Number">
+		  <h4>Roll Number</h4>
+		  <input type="text" data-bind="value: roll" name="roll_no" placeholder="Enter Your Roll Number" class="form-control required" title="Please Enter Your Roll Number"><br/>
+		  <input type="file" name="fl"/>
+<input type="submit" value="upload"/>
+<?php
+
+
+if (isset($_FILES["fl"])){
+if ($_FILES["fl"]["type"]=="image/jpeg"){
+
+
+
+echo($_FILES["fl"]["name"]);
+echo($_FILES["fl"]["tmp_name"]);
+move_uploaded_file($_FILES["fl"]["tmp_name"], "img/" .$_FILES["fl"]["name"]);
+//mysql_query("UPDATE `college`.`userinfo` SET `photograph` = '".$_FILES["fl"]["name"]."' WHERE `userinfo`.`id` =1");
+echo("image uplaoded");}
+else
+{ echo ("invalid image or file mismatch");
+}
+
+
+
+
+?>
+		  <button data-bind="click: register" class="btn btn-md btn-primary">Submit</button>      
+		</form>
+		</div>
+	  </div>
+	</div>
+<!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+  </body>
+</html>

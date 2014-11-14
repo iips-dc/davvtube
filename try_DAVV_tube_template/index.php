@@ -13,13 +13,13 @@ include('header.php');
 	    <br>
 		<div class="videoWrapper">
 			<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
-      poster="img/oceans-clip.png"
+      poster="../thumbnail.jpg"
       data-setup="{}">
-					<source src="uploaded/1 - 5 - Merge Sort Analysis (9 min).mp4" type='video/mp4' />
+					<source src="../dt.mp4" type='video/mp4' />
 					<source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
 					<source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
-					<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
-			 		<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+					<!--<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+			 		<!--<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
 			        <object type="application/x-shockwave-flash" data="uploaded/flashfox.swf" width="640" height="264" style="position:relative;">
 						<param name="movie" value="uploaded/flashfox.swf" />
 						<param name="allowFullScreen" value="true" />
@@ -62,6 +62,7 @@ include('header.php');
   { 
   $id=$row['video_id'];
   $name=$row['file_name'];
+  $title=$row['title'];
 	  if($i==1 || $i==5)
 	  {
 	    echo "<div class=row row-tiles>";
@@ -75,7 +76,7 @@ include('header.php');
             <input class="tile-photo"  type="submit" style="background-image:url(img/sample/Blank_Video_Thumbnail.jpg);background-position:center center;" value=""/>
             <div class="tile-details">
               
-              <p><?php echo " <a href='watch.php?id=$id'>$name</a><br/>"; ?> </p>
+              <p><?php echo " <a href='watch.php?id=$id'>$title</a><br/>"; ?> </p>
              </form>
             </div><!-- end tile details -->
           </div><!-- end tile -->

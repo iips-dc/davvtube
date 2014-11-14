@@ -21,11 +21,13 @@ $numrows = mysql_num_rows($query);
 	 	{
 			$dbusername = $row['u_name'];
 			$dbpassword = $row['psw'];
+			$dbaid = $row['aid'];
 		}
 		if($username==$dbusername&&$password==$dbpassword)
 		{
 			//echo "You're in! <a href='member.php'>Click</a> here to enter the member page ";
-			//$_SESSION['username']=$username;
+			$_SESSION['aid']=$dbaid;
+			
 			//echo $_SESSION['username'];
 			header("Location:admin_davv_tube/index.php");
 		}

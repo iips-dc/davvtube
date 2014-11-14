@@ -1,5 +1,8 @@
 
 <?php
+session_start();
+if(isset($_SESSION['aid'])) {
+
 include('config.php');
 /**
  * PHP Grid Component
@@ -75,7 +78,7 @@ $out = $g->render("list1");
 			<li><a href="upload_form.html">Browse Video</a></li> 
             </ul>-->
 			</li>
-			<li><a href="../VerifyUser/verification.html">Verification</a></li>
+			<li><a href="../VerifyUser/verification.php">Verification</a></li>
 			 <li class="dropdown"><a href="../index.php" class="dropdown-toggle" data-toggle="dropdown">Verify Blog<b class="caret"></b></a>
 			<ul class="dropdown-menu">
 			<li><a href="forum/verify_post.php">Post</a></li>
@@ -105,3 +108,8 @@ $out = $g->render("list1");
 	</center>
 </body>
 </html>
+<?php }
+else {
+header ("location:../../admin_login.php");
+}
+?>

@@ -7,6 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 <title>Student Registration</title>
+<!-- Date Picker for DOB -->
+
+<!-- end Date Picker-->
+
  <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -53,6 +57,43 @@
                                    <link rel="shortcut icon" href="<?php echo $host.$folderName;?>/try_DAVV_tube_template/img/sample/dt1.gif">
 	<!---------------------------/header of davv tube------------------------------->
 	<script type="text/javascript">
+function ValidateFileUpload() {
+        var fuData = document.getElementById('file');
+        var FileUploadPath = fuData.value;
+
+//To check if user upload any file
+        if (FileUploadPath == '') {
+            alert("Please upload an image");
+
+        } else {
+            var Extension = FileUploadPath.substring(
+                    FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+//The file uploaded is an image
+
+if (Extension == "gif" || Extension == "png" || Extension == "bmp"
+                    || Extension == "jpeg" || Extension == "jpg") {
+
+// To Display
+                if (fuData.files && fuData.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(fuData.files[0]);
+                }
+
+            } 
+
+//The file upload is NOT an image
+else {
+                alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
+
+            }
+        }
+    }
 	function validate()
 	{
 	var fname=document.forms["reg"]["f_name"].value;
@@ -212,10 +253,10 @@ $('#category').change(function() {
 
 <form action="Student_register.php" name = "reg" method="post" enctype="multipart/form-data">
 
-<h4>First Name</h4><input  id="focusedInput" type="text" placeholder="Enter Your First Name" name="f_name" class="form-control inputWidth" />
-<h4>Last Name</h4>
+<h4>First Name*</h4><input  id="focusedInput" type="text" placeholder="Enter Your First Name" name="f_name" class="form-control inputWidth" />
+<h4>Last Name*</h4>
 		  <input type="text" name="l_name"  placeholder="Enter Your Last Name" title="Please Enter Your Name" class="form-control required">
-		  <h4>Gender</h4>
+		  <h4>Gender*</h4>
 		  <input type="radio" value="M" name="Gender"><font size="2pt"> <b>Male</b></font>
 		  <input type="radio" value="F" name="Gender"> <font size="2pt"> <b>Female</b></font>
 		  
@@ -223,28 +264,28 @@ $('#category').change(function() {
 		  
 		   <!--/input-group-->
 		  
-		  <h4>Date of birth</h4>
-		  <input type="text" name="dob" placeholder="Enter Your Date of Birth" class="form-control required" title="Please Enter Your Date of Birth">
-		  <h4>Email</h4>
+		  <h4>Date of birth*</h4>
+		  <input type="text" name="dob" placeholder="DD/MM/YYYY" class="form-control required" title="Please Enter Your Date of Birth">
+		  <h4>Email*</h4>
 		 <input type="email" name="Email" placeholder="Enter Your Email-id"  class="form-control required" title="Please Enter Your Email-id">
 		  <!--<h4>Department</h4>
 		  <h1>Dynamically loaded list Sample</h1>
 Country:<select name='country' id='country' size='1'></select>-->
 
-<h4>Department:</h4><select name='category' id='category' placeholder="Enter Your Department" value=1 class="form-control required" size='1' onchange="return Selected('category')"></select>
+<h4>Department:*</h4><select name='category' id='category' placeholder="Enter Your Department" value=1 class="form-control required" size='1' onchange="return Selected('category')"></select>
           <!-- <div name="dept" id="textHint"></div>
 		  <input type="text" name="dept_name" placeholder="Enter Your Department"  class="form-control required" title="Please Enter Your Department">
 		  -->
-		  <h4>Course</h4>
+		  <h4>Course*</h4>
 		  <input type="text" name="course" placeholder="Enter Your course"  class="form-control required" title="Please Enter Your Course">
-		  <h4>Semester</h4>
+		  <h4>Semester*</h4>
 		  <input type="text"  name="sem" placeholder="Enter Your Semester" class="form-control required"  title="Please Enter Your Semester">
-		  <h4>Enrollment Number</h4>
+		  <h4>Enrollment Number*</h4>
 		  <input type="text"  name="enroll_no" placeholder="Enter Your Enrollment Number" class="form-control required"  title="Please Enter Your Enrollment Number">
-		  <h4>Roll Number</h4>
+		  <h4>Roll Number*</h4>
 		  <input type="text"  name="roll_no" placeholder="Enter Your Roll Number"  class="form-control required" title="Please Enter Your Roll Number">
-		  <br> <h4><b> Scan and upload your college ID card:</b></h4>
-		  <font size="4pt"><input type="file" name="file" id="file"></font><br>
+		  <br> <h4><b> Scan and upload your college ID card:*</b></h4><img src="images/noimg.jpg" id="blah">
+		  <font size="4pt"><input type="file" name="file" id="file" onchange="return ValidateFileUpload()"></font><br>
 
 <img id="captcha" src="securimage/securimage_show.php" alt="CAPTCHA Image" />
 <input type="text" name="captcha_code" size="10" maxlength="6" />
@@ -260,6 +301,7 @@ Country:<select name='country' id='country' size='1'></select>-->
 	 <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
 	<script type="text/javascript">
+
 	function Selected(o)
 	{
 	/*alert(o);*/

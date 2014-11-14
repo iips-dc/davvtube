@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(isset($_SESSION['aid'])) {
+
+
 include("connection.php");
 $reply = "SELECT * FROM forum_answer WHERE a_status = 0";
 $result=mysql_query($reply);
@@ -50,18 +54,22 @@ $result=mysql_query($reply);
 			<!--------------/update here set template path-------------------->
             </ul>
 			</li>
-			<li><a href="verification.html">Verification</a></li>
+			<li class="dropdown"><a href="../index.php" class="dropdown-toggle" data-toggle="dropdown">User Verification<b class="caret"></b></a>
+			<ul class="dropdown-menu">
+			<li><a href="<?php echo $set_path; ?>VerifyUser/verification.php">Student</a></li>
+			<li><a href="<?php echo $set_path; ?>VerifyUser/faculty_verification.php">Faculty</a></li>
+			</ul>
+			</li>
 			 <li class="dropdown"><a href="../index.php" class="dropdown-toggle" data-toggle="dropdown">Verify Blog<b class="caret"></b></a>
 			<ul class="dropdown-menu">
-			<li><a href="#">Post</a></li>
-			<li><a href="#">Reply</a></li>
+			<li><a href="verify_post.php">Post</a></li>
+			<li><a href="verify_reply.php">Reply</a></li>
             </ul>
 			</li>
 			<li><a href="../analytics.php">Analytics</a></li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign out<b class="caret"></b></a>
-			<ul class="dropdown-menu">
-			<li><a href="#">Change Password</a></li>
-            </ul>
+           <li><a href="../admin_logout.php">Sign Out</a></li>
+
+			
 			</li>
           </ul>
         </div>
@@ -110,7 +118,7 @@ while($rows=mysql_fetch_array($result)){
 				  <?php
 // Exit looping and close connection 
 }
-mysql_close();
+//mysql_close(); // commented By Komal Rathore
 ?>			  </tbody>
 		  </table>
 		  </form>
@@ -122,3 +130,8 @@ mysql_close();
     <script src="../js/bootstrap.js"></script>
 </body>
 </html>
+<?php }
+else {
+header ("location:../../admin_login.php");
+}
+?>
